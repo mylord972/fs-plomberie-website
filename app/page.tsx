@@ -8,8 +8,8 @@ export default function HomePage() {
   const services = [
     {
       icon: Wrench,
-      title: "Dépannage d'urgence",
-      description: "Intervention rapide 24h/24 et 7j/7 pour tous vos problèmes de plomberie urgents.",
+      title: "Dépannage rapide",
+      description: "Intervention efficace du lundi au vendredi pour tous vos problèmes de plomberie urgents.",
     },
     {
       icon: Droplets,
@@ -24,8 +24,8 @@ export default function HomePage() {
   ]
 
   const stats = [
-    { number: "2020", label: "Année de création" },
-    { number: "24/7", label: "Service d'urgence" },
+    { number: "2019", label: "Année de création" },
+    { number: "Lun - Ven", label: "Disponibilité" },
     { number: "100%", label: "Satisfaction client" },
   ]
 
@@ -99,8 +99,8 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-primary opacity-95" />
-        <div className="absolute inset-0 bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image0-JI9cj5ADrchW64jC8RzHk8b1kicChh.jpeg')] bg-cover bg-center opacity-10" />
+         <div className="absolute inset-0 bg-gradient-to-br from-[#004E75] via-[#006894] to-[#0090C1]" />
+
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl">
@@ -111,8 +111,7 @@ export default function HomePage() {
               Votre plombier de confiance en Martinique
             </h1>
             <p className="text-lg lg:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
-              Interventions d'urgence 24h/24, installations professionnelles et rénovations complètes. Garantie à vie
-              sur toutes nos installations.
+              Installations professionnelles et rénovations complètes. Garantie à vie sur toutes nos installations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground text-base h-12 px-8">
@@ -146,6 +145,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Réalisations */}
       <section id="realisations" className="py-20 lg:py-32 bg-muted/30">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-2xl mb-16 text-center mx-auto">
@@ -228,35 +228,40 @@ export default function HomePage() {
             ))}
           </div>
 
+          {/* Remplacement des 2 cartes : Urgence + Salle de bain */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Service d'urgence */}
             <Card className="border-border">
               <CardContent className="p-8">
                 <Clock className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">Service d'urgence</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Service d'urgence (Lun–Ven)
+                </h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Disponible 24h/24 et 7j/7 pour toutes vos urgences de plomberie. Intervention rapide selon votre
-                  localisation.
+                  Disponibilité du lundi au vendredi, de 7h à 18h. Déplacement rapide selon votre localisation et la nature du problème.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Fuites d'eau</li>
-                  <li>• Canalisations bouchées</li>
-                  <li>• Pannes de chauffe-eau</li>
+                  <li>• Diagnostic express</li>
+                  <li>• Réparation immédiate quand c’est possible</li>
+                  <li>• Devis détaillé sur place</li>
                 </ul>
               </CardContent>
             </Card>
 
+            {/* Rénovation salle de bain */}
             <Card className="border-border">
               <CardContent className="p-8">
-                <Award className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">Garantie à vie</h3>
+                <Droplets className="h-8 w-8 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-3">
+                  Création et rénovation de salles de bain
+                </h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Toutes nos installations bénéficient d'une garantie à vie. Votre tranquillité d'esprit est notre
-                  priorité.
+                  Spécialisé dans la conception complète de salles de bain modernes, y compris les douches à l’italienne sur mesure.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Installations sanitaires</li>
-                  <li>• Chauffe-eau</li>
-                  <li>• Systèmes de chauffage</li>
+                  <li>• Rénovation complète clé en main</li>
+                  <li>• Douches à l’italienne sur mesure</li>
+                  <li>• Installation de robinetterie et sanitaires haut de gamme</li>
                 </ul>
               </CardContent>
             </Card>
@@ -270,10 +275,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-6 text-balance">
-                FS Plomberie, votre partenaire depuis 2020
+                FS Plomberie, votre partenaire depuis 2019
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Fondée en 2020, FS Plomberie s'est rapidement imposée comme une référence en Martinique pour tous les
+                Fondée en 2019, FS Plomberie s'est rapidement imposée comme une référence en Martinique pour tous les
                 travaux de plomberie, sanitaire et chauffage.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -356,7 +361,7 @@ export default function HomePage() {
                   >
                     0696 55 69 55
                   </a>
-                  <p className="text-sm text-muted-foreground mt-2">Disponible 24h/24</p>
+                  <p className="text-sm text-muted-foreground mt-2">Du lundi au vendredi, 7h–18h</p>
                 </CardContent>
               </Card>
 
@@ -370,7 +375,7 @@ export default function HomePage() {
                   >
                     Message rapide
                   </a>
-                  <p className="text-sm text-muted-foreground mt-2">Réponse immédiate</p>
+                  <p className="text-sm text-muted-foreground mt-2">Réponse dès ouverture</p>
                 </CardContent>
               </Card>
             </div>
@@ -404,13 +409,13 @@ export default function HomePage() {
                 <span className="text-lg font-bold">FS Plomberie</span>
               </div>
               <p className="text-sm text-secondary-foreground/80 leading-relaxed">
-                Rapidité, fiabilité, tranquillité. Votre plombier de confiance en Martinique depuis 2020.
+                Rapidité, fiabilité, tranquillité. Votre plombier de confiance en Martinique depuis 2019.
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-secondary-foreground/80">
-                <li>Dépannage d'urgence</li>
+                <li>Dépannage rapide</li>
                 <li>Installation sanitaire</li>
                 <li>Rénovation</li>
                 <li>Chauffe-eau</li>
@@ -420,7 +425,7 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-sm text-secondary-foreground/80">
                 <li>Tél: 0696 55 69 55</li>
-                <li>Service 24h/24 - 7j/7</li>
+                <li>Disponibilité : Lun–Ven, 7h–18h</li>
                 <li>Martinique</li>
               </ul>
             </div>
