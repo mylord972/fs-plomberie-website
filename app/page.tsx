@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Phone, Droplets, Wrench, Clock, Shield, Award, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -29,23 +32,30 @@ export default function HomePage() {
     { number: "100%", label: "Satisfaction client" },
   ]
 
+  // ⬇️ Utilise tes images actuelles (tu peux remplacer par tes images locales si besoin)
+  // Exemple images locales si tu veux: "/images/avant-apres/avant1.jpg", "/images/avant-apres/apres1.jpg", etc.
   const beforeAfterGallery = [
-    {
-      before: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image7-l4r1r2GyvwV6OWctWxvRsChoUWdJaZ.jpeg",
-      after: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image2-1mV5PpGVlpZFUtCJdvfcdFTKB2vQcB.jpeg",
-      title: "Rénovation douche moderne",
-    },
-    {
-      before: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image3-ATvR1CU42IboQy4p5clQtwG1EDz9ZY.jpeg",
-      after: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image4-9OgDEHO2CD0XfWwHztUBX5xtY4inTG.jpeg",
-      title: "Transformation salle de bain",
-    },
-    {
-      before: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image1-nn43CtDFVa9AWpFMz9qXY88K7AI2M8.jpg",
-      after: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image6-F0a00I1rBujJgGWfUCOR4OTlO2roXN.jpeg",
-      title: "Sol de douche en galets",
-    },
-  ]
+    
+  { before: "/images/avant-apres/avant1.jpg", after: "/images/avant-apres/apres1.jpg", title: "Création complète d’une douche à l’italienne" },
+  { before: "/images/avant-apres/avant2.jpg", after: "/images/avant-apres/apres2.jpg", title: "Transformation baignoire en douche design" },
+  { before: "/images/avant-apres/avant3.jpg", after: "/images/avant-apres/apres3.jpg", title: "Rénovation moderne d’une salle de bain complète" },
+  { before: "/images/avant-apres/avant4.jpg", after: "/images/avant-apres/apres4.jpg", title: "Rénovation du sol de douche en galets" },
+  { before: "/images/avant-apres/avant5.jpg", after: "/images/avant-apres/apres5.jpg", title: "Transformation baignoire en douche à l’italienne" },
+  { before: "/images/avant-apres/avant6.jpg", after: "/images/avant-apres/apres6.jpg", title: "Rénovation complète avec douche carrelée" },
+  { before: "/images/avant-apres/avant7.jpg", after: "/images/avant-apres/apres7.jpg", title: "Modernisation d’une douche ouverte" },
+  { before: "/images/avant-apres/avant8.jpg", after: "/images/avant-apres/apres8.jpg", title: "Installation d’une douche moderne avec paroi vitrée" },
+  { before: "/images/avant-apres/avant9.jpg", after: "/images/avant-apres/apres9.jpg", title: "Rénovation totale d’une salle de bain" },
+  { before: "/images/avant-apres/avant10.jpg", after: "/images/avant-apres/apres10.jpg", title: "Salle de bain modernisée avec meuble vasque double tiroir" },
+  { before: "/images/avant-apres/avant11.jpg", after: "/images/avant-apres/apres11.jpg", title: "Plan de travail de cuisine rénové effet marbre" },
+  { before: "/images/avant-apres/avant12.jpg", after: "/images/avant-apres/apres12.jpg", title: "Rénovation complète avec douche à l’italienne" },
+];
+
+  
+
+  // ⬇️ Nouveauté : état pour afficher 3 items puis tout
+  const [showAll, setShowAll] = useState(false);
+const visibleProjects = showAll ? beforeAfterGallery : beforeAfterGallery.slice(0, 3);
+
 
   return (
     <div className="min-h-screen">
@@ -99,8 +109,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
-         <div className="absolute inset-0 bg-gradient-to-br from-[#004E75] via-[#006894] to-[#0090C1]" />
-
+        <div className="absolute inset-0 bg-gradient-to-br from-[#004E75] via-[#006894] to-[#0090C1]" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl">
@@ -146,128 +155,88 @@ export default function HomePage() {
       </section>
 
       {/* Réalisations */}
-      <section id="realisations" className="py-20 lg:py-32 bg-muted/30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-2xl mb-16 text-center mx-auto">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">Nos réalisations</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Découvrez la qualité de notre travail à travers nos transformations avant/après.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {beforeAfterGallery.map((project, index) => (
-              <Card key={index} className="border-border overflow-hidden hover:shadow-xl transition-shadow">
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-2 gap-0">
-                    <div className="relative aspect-square">
-                      <div className="absolute top-2 left-2 z-10 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        Avant
-                      </div>
-                      <Image
-                        src={project.before || "/placeholder.svg"}
-                        alt={`Avant - ${project.title}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="relative aspect-square">
-                      <div className="absolute top-2 right-2 z-10 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                        Après
-                      </div>
-                      <Image
-                        src={project.after || "/placeholder.svg"}
-                        alt={`Après - ${project.title}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-foreground text-center">{project.title}</h3>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button size="lg" variant="outline" className="text-base h-12 px-8 bg-transparent">
-              Voir toutes nos réalisations
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">
-              Nos services professionnels
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Une gamme complète de services de plomberie pour particuliers et professionnels.
-            </p>
-          </div>
+      <section id="realisations" className="py-20 lg:py-32 bg-muted/30">
+  <div className="container mx-auto px-4 lg:px-8">
+    <div className="max-w-2xl mb-16 text-center mx-auto">
+      <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 text-balance">Nos réalisations</h2>
+      <p className="text-lg text-muted-foreground leading-relaxed">
+        Découvrez la qualité de notre travail à travers nos transformations avant/après.
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {services.map((service, index) => (
-              <Card
-                key={index}
-                className="border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
-              >
-                <CardContent className="p-8">
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {visibleProjects.map((project, index) => (
+        <Card
+          key={index}
+          className="group border-border overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1"
+        >
+          <CardContent className="p-0">
+            <div className="grid grid-cols-2 gap-0">
+              {/* AVANT */}
+              <div className="relative aspect-square overflow-hidden">
+                <div className="absolute top-2 left-2 z-10 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                  Avant
+                </div>
+                <Image
+                  src={project.before}
+                  alt={`Avant - ${project.title}`}
+                  fill
+                  className="object-cover transition-transform duration-300 ease-out will-change-transform group-hover:scale-110"
+                />
+              </div>
 
-          {/* Remplacement des 2 cartes : Urgence + Salle de bain */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Service d'urgence */}
-            <Card className="border-border">
-              <CardContent className="p-8">
-                <Clock className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  Service d'urgence (Lun–Ven)
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Disponibilité du lundi au vendredi, de 7h à 18h. Déplacement rapide selon votre localisation et la nature du problème.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Diagnostic express</li>
-                  <li>• Réparation immédiate quand c’est possible</li>
-                  <li>• Devis détaillé sur place</li>
-                </ul>
-              </CardContent>
-            </Card>
+              {/* APRÈS */}
+              <div className="relative aspect-square overflow-hidden">
+                <div className="absolute top-2 right-2 z-10 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                  Après
+                </div>
+                <Image
+                  src={project.after}
+                  alt={`Après - ${project.title}`}
+                  fill
+                  className="object-cover transition-transform duration-300 ease-out will-change-transform group-hover:scale-110"
+                />
+              </div>
+            </div>
 
-            {/* Rénovation salle de bain */}
-            <Card className="border-border">
-              <CardContent className="p-8">
-                <Droplets className="h-8 w-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  Création et rénovation de salles de bain
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Spécialisé dans la conception complète de salles de bain modernes, y compris les douches à l’italienne sur mesure.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Rénovation complète clé en main</li>
-                  <li>• Douches à l’italienne sur mesure</li>
-                  <li>• Installation de robinetterie et sanitaires haut de gamme</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+            <div className="p-4">
+              <h3 className="font-semibold text-foreground text-center">{project.title}</h3>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+
+    <div className="mt-12 text-center">
+      {!showAll ? (
+        <Button
+          size="lg"
+          variant="outline"
+          className="text-base h-12 px-8 bg-transparent"
+          onClick={() => setShowAll(true)}
+        >
+          Voir toutes nos réalisations
+        </Button>
+      ) : (
+        <Button
+          size="lg"
+          variant="outline"
+          className="text-base h-12 px-8 bg-transparent"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            setShowAll(false);
+          }}
+        >
+          Réduire l’affichage
+        </Button>
+      )}
+    </div>
+  </div>
+</section>
+
 
       {/* About Section */}
       <section id="about" className="py-20 lg:py-32 bg-muted/30">
